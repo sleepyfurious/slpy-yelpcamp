@@ -14,7 +14,8 @@ app.set("view engine", "ejs")
 // V2 { ========================================================================
 
 // connect db
-mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true });
+databaseURL = process.env.DATABASEURL; // specified through environment variable
+mongoose.connect( databaseURL, { useNewUrlParser: true });
 
 // setup schema
 var campgroundSchema = new mongoose.Schema({
