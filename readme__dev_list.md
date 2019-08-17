@@ -1,5 +1,5 @@
 # 20190815 About this file
-This file notes a list of development items from Colt's YelpCamp V1 to his final V11 and beyond. As watched his course video, I also made notes with my comments and fixes those were covered by his TA, Ian. The items' progress is marked with checkboxes. I'll code to achieve the result as same as his V11 version, but with possibilities of some minor adjustments that I believe to give better, cleaner code that I might do easily. After finish the work and remove all "wip", theåre is the "aftermath" part that I might come back to take a look and add some additional feature later.
+This file notes a list of development items from Colt's YelpCamp V1 to his final V11 and beyond. As watched his course video, I also made notes with my comments and fixes those were covered by his TA, Ian. The items' progress is marked with checkboxes. I'll code to achieve the result as same as his V11 version, but with possibilities of some minor adjustments that I believe to give better, cleaner code that I might do easily. After finish the work and remove all "wip", there is the "aftermath" part that I might come back to take a look and add some additional feature later.
 
 # YelpCamp V1
 
