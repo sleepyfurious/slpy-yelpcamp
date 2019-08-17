@@ -4,8 +4,13 @@ YelpCamp is a Node.js web application from The Web Developer Bootcamp[¹](#credi
 See pending development here: [readme_devList.md](readme_devList.md).
 
 ## Deployment
-The code use MongoDB to store data and it access the database with the URL stored in environment variable DATABASEURL. For example, to start the application on the server in Bash with MongoDB instance in localhost, you may started it with the following CLI script in the root directory of this project: 
+The code use environment variables to supply site-specific configuration. Currently, supplying the following environment variable is required:
+* DATABASEURL: The code use MongoDB to store data.
+* PORT: listened PORT number for application to response via the web.
+
+For example, to start the application on the server in Bash with registered port 3000 and MongoDB instance in localhost, you may started it with the following CLI script in the root directory of this project: 
 ```bash
+export PORT=3000
 export DATABASEURL="mongodb://localhost/yelp_camp"
 node app.js
 ```
