@@ -75,19 +75,19 @@ Each Campground has:
 # YelpCamp V6
 
 ## Auth Pt.1 - Add User Model
-- [ ] Install all packages needed for tuh
-- [ ] Define User model
+- [x] Install all packages needed for authentication
+- [x] Define User model
 
 ## Auth Pt.2 - Register
-- [ ] Configure Passport
-- [ ] Add register routes
-- [ ] Add register view template
+- [x] Configure Passport
+- [x] Add register routes
+- [x] Add register view template
 
 ## Auth Pt.3 - Login
-- [ ] Add login routes
-- [ ] Add login template
+- [x] Add login routes
+- [x] Add login template
 
-- [ ] get rid of the empty function in the login logic.
+- [x] get rid of the empty function in the login logic.
 
 ## Auth Pt.4 - Logout/Navbar
 - [ ] Add logout route
