@@ -1,95 +1,74 @@
-// anything introduced in this v2 code will have // V2 { == code -- }
+// === requires
+let express         = require("express")
+,   bodyParser      = require("body-parser")
+,   session         = require("express-session")
+,   passport        = require('passport')
+,   LocalStrategy   = require('passport-local')
+,   mongoose        = require("mongoose")
+,   User            = require("./models_user")
 
-// V2 { ========================================================================
-// formatting of concatinated variables can also be done like this.
-var express     = require("express"),
-    bodyParser  = require("body-parser"),
-    mongoose    = require("mongoose");
-// --------------------------------------------------------------------------- }
 
-var app = express();
-app.use(bodyParser.urlencoded({extended: true}));
+// === constant
+const DATABASEURL   = process.env.DATABASEURL;
+const PORT          = process.env.PORT;
+
+
+// === initialization
+let app = express();
 app.set("view engine", "ejs")
+app.use(bodyParser.urlencoded({extended: true}));
 
-// V2 { ========================================================================
+{ // passport configuration
 
-// connect db
-databaseURL = process.env.DATABASEURL; // specified through environment variable
-mongoose.connect( databaseURL, { useNewUrlParser: true });
+    // Initializing express-session for express app must be done before passport
+    // initialization below
+    app.use(session({
+        secret: "Once again Rusty wins cutest dog!"
+    ,   resave: false
+    ,   saveUninitialized: false
+    }));
 
-// setup schema
-var campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    // configure passport to use a LocaalStrategy that use authentication code 
+    // provided by Passport-Local Mongoose.
+    passport.use(new LocalStrategy( User.authenticate() ));
+
+    // use static serialize and deserialize from Passport-Local Mongoose User
+    // in passport session.
+    passport.serializeUser(User.serializeUser());
+    passport.deserializeUser(User.deserializeUser());
+}
+
+// register middleware for every routes, this must be done after
+// app.use(passport.session()) in order to have passport's variables and methods
+// supplied in req for us.
+app.use((req, res, next) => {
+   res.locals.currentUser = req.user;
+   next();
 });
 
-var Campground = mongoose.model("Campground", campgroundSchema);
+{ // database
 
-// --------------------------------------------------------------------------- }
+    // work around mongoose's internal deprecation with global options, see
+    // deprecations note of mongoose V5.6.9.
+    mongoose.set('useNewUrlParser'  , true);
+    mongoose.set('useFindAndModify' , false);
+    mongoose.set('useCreateIndex'   , true);
 
-app.get("/", function( req, res ){
-    res.render("landing");
-});
+    //
+    mongoose.connect(DATABASEURL);
+}
 
-app.get("/campgrounds", function( req, res ){
-    // V2 { ====================================================================
 
-    // Get all campgrounds from DB
-    Campground.find({}, function(err, allCampgrounds){
-        if(err) {
-            console.log(err)
-        } else {
-            res.render("campgrounds", {campgrounds:allCampgrounds});
-        }
-    });
+// === the rest
 
-    // ----------------------------------------------------------------------- }
-});
+// routing
+app.use("/", require("./routes_index"));
+app.use("/campgrounds", require("./routes_campgrounds"));
 
-app.post("/campgrounds", function( req, res ){
-    // get data from form and add to campgrounds array
-    var name = req.body.name;
-    var image = req.body.image;
-    var desc = req.body.description;
-    var newCampground = {name:name, image:image, description: desc};
-
-    // V2 { ====================================================================
-
-    // Create a new campground and save to DB
-    Campground.create(newCampground, function(err, newlyCreated){
-        if(err){
-            console.log(err);
-        } else {
-            res.redirect("/campgrounds");   // redirect back to campgrounds page
-        }
-    });
-
-    // ----------------------------------------------------------------------- }
-});
-
-app.get("/campgrounds/new", function( req,res ){
-    res.render("new")
-});
-
-// V2 { ========================================================================
-
-// SHOW - shows more info about one campground
-app.get("/campgrounds/:id", function( req,res ){
-    // find the campground with provided ID
-    // render show template with that campground
-    Campground.findById( req.params.id , function(err, foundCampground){
-        if ( err ) {
-            console.log(err)
-        } else {
-            // render show template with that campground
-            res.render("show", {campground:foundCampground});
-        }
-    });
-});
-
-// --------------------------------------------------------------------------- }
-
+// serve
 app.listen(process.env.PORT, function(){
     console.log("YelpCamp has started!!")
 });
