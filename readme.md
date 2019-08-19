@@ -21,8 +21,15 @@ echo "\
 \
 # Prepare and launch an instance of MongoDB in background, then config and 
 # launch the app.
-mkdir -p local_data
-mongod -dbpath=local_data --nojournal&
+
+# MongoDB
+proc_stat=\`ps -A\`
+if ! ( echo \"\$proc_stat\" | grep mongod ); then
+  mkdir -p local_data
+  mongod -dbpath=local_data --nojournal&
+fi
+
+# the app
 export PORT=3000
 export DATABASEURL=\"mongodb://localhost/yelp_camp\"
 node app.js
