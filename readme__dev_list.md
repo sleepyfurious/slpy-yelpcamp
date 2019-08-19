@@ -90,12 +90,12 @@ Each Campground has:
 - [x] get rid of the empty function in the login logic.
 
 ## Auth Pt.4 - Logout/Navbar
-- [ ] Add logout route
+- [x] Add logout route
 - [ ] Prevent user from adding a comment if not signed in
-- [ ] Make links in navbar link correctly
+- [x] Make links in navbar link correctly
 
 ## Auth Pt.5 - Show/Hide Links
-- [ ] Show/hide auth links correctly
+- [x] Show/hide auth links correctly
 
 # YelpCamp V7
 "Substantial changes to the application structure."
