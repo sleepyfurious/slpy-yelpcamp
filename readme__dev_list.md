@@ -101,7 +101,7 @@ Each Campground has:
 "Substantial changes to the application structure."
 
 ## Refactor The Routes
-- [ ] Use Express router to reorganize all routes
+- [x] Use Express router to reorganize all routes
 
 # YelpCamp V8
 
