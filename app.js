@@ -11,9 +11,15 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs")
 
+// work around mongoose's internal deprecation with global options, see
+// deprecations note of mongoose V5.6.9.
+mongoose.set('useNewUrlParser'  , true);
+mongoose.set('useFindAndModify' , false);
+mongoose.set('useCreateIndex'   , true);
+
 // connect db
 databaseURL = process.env.DATABASEURL; // specified through environment variable
-mongoose.connect( databaseURL, { useNewUrlParser: true });
+mongoose.connect(databaseURL);
 
 // === the rest
 
