@@ -1,6 +1,7 @@
 // === requires
 let express         = require("express")
 ,   bodyParser      = require("body-parser")
+,   methodOverride  = require("method-override")
 ,   session         = require("express-session")
 ,   passport        = require('passport')
 ,   LocalStrategy   = require('passport-local')
@@ -13,10 +14,14 @@ const DATABASEURL   = process.env.DATABASEURL;
 const PORT          = process.env.PORT;
 
 
-// === initialization
+// ===
 let app = express();
 app.set("view engine", "ejs")
 app.use(bodyParser.urlencoded({extended: true}));
+
+// It is important that this module is used before any module that needs to
+// know the method of the request
+app.use(methodOverride("_method"));
 
 { // passport configuration
 
@@ -57,16 +62,13 @@ app.use((req, res, next) => {
     mongoose.set('useFindAndModify' , false);
     mongoose.set('useCreateIndex'   , true);
 
-    //
     mongoose.connect(DATABASEURL);
 }
-
-
-// === the rest
 
 // routing
 app.use("/", require("./routes_index"));
 app.use("/campgrounds", require("./routes_campgrounds"));
+app.use("/campgrounds/:id/comments", require("./routes_comments"));
 
 // serve
 app.listen(process.env.PORT, function(){

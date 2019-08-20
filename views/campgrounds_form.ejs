@@ -1,0 +1,39 @@
+<% include partials_header %>
+
+<div class="container">
+    <div class="row">
+        <h1>
+            <%= isNewOrNotEdit? "Create a New Campground"
+                              : `Edit ${campground.name}`; %>
+        </h1>
+        
+        <% if (isNewOrNotEdit) { %>
+        <form action="/campgrounds" method="POST">
+        <% } else { %>
+        <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
+        <% } %>
+            
+            <input type="text" 
+                   name="campground[name]"  placeholder="name"
+                   value="<%= isNewOrNotEdit? '': campground.name; %>"
+                   >
+            
+            <input type="text"
+                   name="campground[image]" placeholder="image url"
+                   value="<%= isNewOrNotEdit? '': campground.image; %>"
+                   >
+
+            <input type="text"
+                   name="campground[description]" placeholder="description"
+                   value="<%= isNewOrNotEdit? '': campground.description; %>"
+                   >
+
+            <button class="bgn btn-lg btn-primary btn-block">submit</button>
+            
+        </form>
+        
+        <a href="/campgrounds">Go Back</a>
+    </div>  
+</div>
+
+<% include partials_footer %>
