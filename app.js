@@ -6,7 +6,7 @@ let express         = require("express")
 ,   passport        = require('passport')
 ,   LocalStrategy   = require('passport-local')
 ,   mongoose        = require("mongoose")
-,   User            = require("./models_user")
+,   User            = require("./models_user");
 
 
 // === constant
@@ -64,6 +64,9 @@ app.use((req, res, next) => {
 
     mongoose.connect(DATABASEURL);
 }
+
+// force reset database with some seed.
+require("./seeds")("123456");
 
 // routing
 app.use("/", require("./routes_index"));

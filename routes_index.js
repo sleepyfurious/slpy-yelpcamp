@@ -28,7 +28,8 @@ router.post("/register", (req, res) => {
                 console.log("is authenticate" + req.isAuthenticated());
                 res.redirect("/campgrounds"); 
             });
-}); });
+        }
+); });
 
 // show login form
 router.get("/login", (req, res) => res.render("login") );

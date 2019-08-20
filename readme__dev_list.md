@@ -46,10 +46,8 @@ Each Campground has:
 # YelpCamp V3
 
 ## Add Seeds File
-- [ ] Add a seeds.js. A functionality to clear and populate our database with some sample data
-- [ ] Run the seeds file
-
-* reminder: seeddb_ian version is on Desktop
+- [x] Add a seeds.js. A functionality to clear and populate our database with some sample data
+- [x] Run the seeds file
 
 ## Add the Comment model!
 - [x] Add the comment model!
