@@ -1,11 +1,16 @@
 let router      = require("express").Router()
 ,   passport    = require("passport")
-,   User        = require("./models_user");
+,   User        = require("./models_user")
+,   middleware  = require("./routes_middleware");
 
+
+// show landing page
 router.get("/", (req, res) => res.render("landing") );
+
 
 // show register form
 router.get("/register", (req, res) => res.render("register") );
+
 
 // handle sign up logic
 router.post("/register", (req, res) => {
@@ -31,8 +36,10 @@ router.post("/register", (req, res) => {
         }
 ); });
 
+
 // show login form
 router.get("/login", (req, res) => res.render("login") );
+
 
 // handling login request
 router.post(    "/login"
@@ -44,10 +51,33 @@ router.post(    "/login"
                 })
            );
 
+
 // show logout form
-router.get("/logout", function(req, res){
+router.get("/logout", (req, res) => {
    req.logout();
    res.redirect("/campgrounds");
+});
+
+
+// profile page
+router.get("/profile", middleware.isLoggedIn, (req, res) => {
+    res.render("profile");
+});
+
+
+// reset database
+// - this route is opened up just for username admin.
+router.post(    "/resetdata"
+           ,    middleware.isLoggedIn
+           ,    (req, res) => {
+
+    res.redirect("back");
+
+    // failure guard
+    if (req.user.username !== "admin") return;
+
+    require("./seeds")(req.body.password);
+
 });
 
 module.exports = router;

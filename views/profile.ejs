@@ -1,0 +1,12 @@
+<% include partials_header %> 
+
+<h1>UserPage</h1>
+
+<% if(currentUser.username == "admin") { %>
+<form action="/resetdata" method="POST">
+    <input type="password" name="password" placeholder="new admin password">
+    <input type="submit" value="Reset Data!">
+</form>
+<% } %>
+
+<% include partials_footer %> 

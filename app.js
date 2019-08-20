@@ -65,9 +65,6 @@ app.use((req, res, next) => {
     mongoose.connect(DATABASEURL);
 }
 
-// force reset database with some seed.
-require("./seeds")("123456");
-
 // routing
 app.use("/", require("./routes_index"));
 app.use("/campgrounds", require("./routes_campgrounds"));
