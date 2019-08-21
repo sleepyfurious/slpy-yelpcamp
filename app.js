@@ -6,7 +6,7 @@ let express         = require("express")
 ,   passport        = require('passport')
 ,   LocalStrategy   = require('passport-local')
 ,   mongoose        = require("mongoose")
-,   User            = require("./models_user");
+,   User            = require("./app/models_user");
 
 
 // === constant
@@ -66,9 +66,9 @@ app.use((req, res, next) => {
 }
 
 // routing
-app.use("/", require("./routes_index"));
-app.use("/campgrounds", require("./routes_campgrounds"));
-app.use("/campgrounds/:id/comments", require("./routes_comments"));
+app.use("/", require("./app/routes_index"));
+app.use("/campgrounds", require("./app/routes_campgrounds"));
+app.use("/campgrounds/:id/comments", require("./app/routes_comments"));
 
 // serve
 app.listen(process.env.PORT, function(){
