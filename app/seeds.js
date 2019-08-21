@@ -1,12 +1,12 @@
 // This code clear Camground a and pre-populate YelpCamp with some mock-up data.
 
-let mongoose    = require("mongoose")
-,   User        = require("./models_user")
-,   Campground  = require("./models_campground")
-,   Comment     = require("./models_comment");
+const mongoose    = require("mongoose")
+,     User        = require("./models_user")
+,     Campground  = require("./models_campground")
+,     Comment     = require("./models_comment");
 
 
-let data = [
+const campgroundSeeds = [
     {   name        : "Canyon Floor"
     ,   image       : "https://source.unsplash.com/K9olx8OF36A"
     ,   description : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -46,59 +46,77 @@ let data = [
 ]
 // ^ These photos are from unsplash.com.
 
+const usernameSeeds = [ "admin", "Homer Happy", "Ervin Howell" ];
+
+
 // reset YelpCamp data and admin with new password.
 module.exports = (adminPassword) => {
 
-    // Because of mongoose call is asynchronous and my current JavaScript skill
-    // is still very limited, I'll rely on nested callbacks.
+    // I've not decided about async/await in client code, so I wrap it here.
+    (async () => {
 
-    // Remove every user
-    User.remove({}, (err) => {
+        await User.remove({});
+        await Campground.remove({});
 
-        if (err) console.log(err);
-        else {
+        let nonAdminUserList = [];
 
-            User.register(
-                {username: "admin"}
-            ,   adminPassword
-            ,   (err, user) => {
-                    if (err) console.log(err);
-                }
-        );  }
+        // Populate users
+        // FYI: forEach doesn't support async/wait
+        for (const [i, username] of usernameSeeds.entries()) {
 
-    });
+            let newUser = await User.register( {username}
+                                             , String(adminPassword)
+                                             );
+            if ( i > 0 ) nonAdminUserList.push(newUser);
+        };
 
-    // Remove every campground
-    Campground.remove({}, (err) => {
-        
-        if (err) console.log(err);
-        else {
-            console.log("removed campgrounds!");
+        let randomPostUserIndices 
+            = generatePseudoRandomNumbers( 102, campgroundSeeds.length
+                                         , nonAdminUserList.length )
+        ,   randomCommentUserIndices
+            = generatePseudoRandomNumbers( 103, campgroundSeeds.length
+                                         , nonAdminUserList.length )
 
-            //add campgrounds
-            data.forEach((seed) => {
+        // Populate campgrounds
+        for (const [i, seed] of campgroundSeeds.entries()) {      
 
-                Campground.create(seed, (err, campground) => {
+            const randomPostUser    
+                  = nonAdminUserList[randomPostUserIndices[i]]
 
-                    if (err) console.log(err);
-                    else {
-                        console.log("added a campground.");
+            ,     randomCommentUser 
+                  = nonAdminUserList[randomCommentUserIndices[i]];
 
-                        //create a comment
-                        Comment.create(
-                            {
-                                text: "This place is great!"
-                            ,   author: "Homer"
-                            }
-                        ,   (err, comment) => {
-                                if (err) console.log(err);
-                                else {
-                                    campground.comments.push(comment);
-                                    campground.save();
-                                    console.log("created new comment.");
+            const seedWithAuthor = Object.assign({}, seed);
+            
+            seedWithAuthor.author = { id       : randomPostUser._id 
+                                    , username : randomPostUser.username };
 
-                        }   }   );
-            }   }); });     
-    }   });
+            let campground = await Campground.create(seedWithAuthor);
+            console.log("added a campground.");
 
+            let comment = await Comment.create({  
+                text  : "This place is great!"
+            ,   author: { id: randomCommentUser._id 
+                        , username: randomCommentUser.username
+            }});
+
+            campground.comments.push(comment);
+            await campground.save();
+            console.log("added new comment.");
+        };
+
+    })().catch(err => console.log(err));
 }    
+
+// The mathematic ref: https://gist.github.com/blixt/f17b47c62508be59987b
+// return a list of number between 0 and range-1;
+function generatePseudoRandomNumbers(seed, arraySize, range) {
+    ret = [];
+
+    for (let i = 0; i < arraySize; ++i) {
+        seed = seed * 16807 % 2147483647;
+        ret.push(seed %range);
+    }
+    
+    return ret;
+}
