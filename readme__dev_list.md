@@ -157,25 +157,18 @@ Each Campground has:
 "Usability"
 
 ## Adding in Flash!
-- [ ] flash messages: see once
+- [x] flash messages: see once
 * reminder: Bootstrap has alert component with different colors built in!
-* reminder: undefined is not truthy, empty array is truthy.
-* reminder:
-  ```javascript
-  if(err){
-    req.flash("error", err.message);
-    return res.redirect("/register"); // instead of return res.render("register");
-  }
-  ```
-* reminder: So we're taking advantage of "err" for our message.
-* reminder: Fix the middleware in the screen shot on Desktop! and everything else findById, 
-there's a small issue with our app in production. The show and edit routes aren't handling errors properly so the application can crash under certain circumstances. or to fix it..just see more here: https://www.youtube.com/watch?v=eDWPJAzlBfM&feature=youtu.be
 
 ## Landing Page
-* see tutorial here: https://github.com/nax3t/background-slider. follow it!
+- [ ] see tutorial here: https://github.com/nax3t/background-slider. follow it!
  * modernizr.js is to make old browser likes internet explorer <= 8.0 behave with css more like modern browser.
  * separate landing.css that is used just for this page
  * css property "animation" is going to allow us to actually fade images in and out. infinite value is to loop infinitly.
+
+## The rest
+- [ ] Dynamic Price Feature
+- [ ] Bootstraping the remaining and some CSS work.
 
 ## Aftermath
 * I might later add features like google map and fuzzy search: https://www.udemy.com/the-web-developer-bootcamp/learn/lecture/6754188#content

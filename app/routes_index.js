@@ -27,8 +27,11 @@ router.post("/register", (req, res) => {
     ,   (err, user) => {
 
             if (err) {
+                // - we're taking advantage of "err" for our message.
+                // - req.flash must be done before redirect to have the info
+                // available in req.flash for the redirection.
                 req.flash("error", err.message);
-                return res.render("register");
+                return res.redirect("/register");
             }
 
             req.flash("success", `${req.body.username} signed up.`);
@@ -36,8 +39,6 @@ router.post("/register", (req, res) => {
             // establish logged in session
             passport.authenticate("local", { session: true })(req, res, () => {
 
-                // req.flash must be done before redirect to have the info
-                // available in req.flash for the redirection.
                 req.flash("success", "You're now logged in!");
                 res.redirect("/campgrounds"); 
             });

@@ -49,13 +49,15 @@ router.get("/:id", (req, res) => {
     // render show template with that campground
     Campground.findById(req.params.id).populate("comments")
                                       .exec((err, foundCampground) => {
-        if ( err ) console.log(err)
-        else {
-            console.log(foundCampground);
-
-            // render show template with that campground
-            res.render("campgrounds_show", {campground:foundCampground});
+        if (err || !foundCampground) {
+            req.flash("error", "Campground not found.");
+            return res.redirect("back");
         }
+
+        console.log(foundCampground);
+
+        // render show template with that campground
+        res.render("campgrounds_show", {campground:foundCampground});
 }); });
 
 
