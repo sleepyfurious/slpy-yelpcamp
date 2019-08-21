@@ -2,7 +2,7 @@
 YelpCamp is a Node.js web application from The Web Developer Bootcamp[¹](#credits). A plain and simple social network website for my learning and demonstration. This project, Slpy's YelpCamp, is my version of YelpCamp. I started versioning it at revision 2 of YelpCamp (YelpCamp_v2). I'll code to achieve almost the same result as the final version in the course, v11, but with possibilities of some minor adjustments to my preference and some additional features. The goal is to learn full-stack web development try some relevant coding skills. See pending development note here: [readme__dev_list.md](readme__dev_list.md).
 
 Slpy's YelpCamp has deviated from YelpCamp_v11 with the following additions:
-* The use of some element of modern JavaScript like arrow function, more to come...
+* The use of some modern JavaScript element that pops out as I study _The JavaScript language_ book[²](#credits) along coding this app; there will be elements like arrow functions, Object.assign and more to come...
 * The new and edit forms are DRY up in single EJS template instead of two separated one for both campgrounds and comments.
 * A convenient UI for a user registered with name "admin" to seed database. The seeding also reset users to contain only "admin".
 
@@ -46,5 +46,7 @@ The site will now served locally at http://localhost:3000/
 
 ## Credits
 
-[1] This project is a part of my enrollment in the Udemy course - [The Web Developer Bootcamp by Colt Steele](https://www.udemy.com/the-web-developer-bootcamp/).
+1. This project is a part of my enrollment in the Udemy course - [The Web Developer Bootcamp by Colt Steele](https://www.udemy.com/the-web-developer-bootcamp/).
+
+2. Ilya Kantor. 2019. _The JavaScript language_. Retrieved Aug, 2019 from https://javascript.info.
 
