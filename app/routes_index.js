@@ -26,11 +26,19 @@ router.post("/register", (req, res) => {
         // post-register handler
     ,   (err, user) => {
 
-            if (err) return res.render("register");
+            if (err) {
+                req.flash("error", err.message);
+                return res.render("register");
+            }
+
+            req.flash("success", `${req.body.username} signed up.`);
 
             // establish logged in session
             passport.authenticate("local", { session: true })(req, res, () => {
-                console.log("is authenticate" + req.isAuthenticated());
+
+                // req.flash must be done before redirect to have the info
+                // available in req.flash for the redirection.
+                req.flash("success", "You're now logged in!");
                 res.redirect("/campgrounds"); 
             });
         }
@@ -46,15 +54,28 @@ router.post(    "/login"
 
                 // passport.authenticate is actually a middleware
            ,    passport.authenticate("local", {
-                    successRedirect: "/campgrounds"
-                ,   failureRedirect: "/login"
+                    failureRedirect: "/login"
+                ,   failureFlash    : true
                 })
+           ,    (req, res) => {
+                    // If this function gets called, the authentication was 
+                    // successful.
+                    
+                    req.flash( 
+                        "success"
+                    ,   `Logged you in. Welcome back ${req.body.username}`
+                    );
+
+                    res.redirect("/campgrounds");
+                }
            );
 
 
 // show logout form
 router.get("/logout", (req, res) => {
    req.logout();
+
+   req.flash("success", "Logged you out!");
    res.redirect("/campgrounds");
 });
 
@@ -71,12 +92,12 @@ router.post(    "/resetdata"
            ,    middleware.isLoggedIn
            ,    (req, res) => {
 
-    res.redirect("back");
-
     // failure guard
     if (req.user.username !== "admin") return;
 
     require("./seeds")(req.body.password);
+
+    res.redirect("back");
 
 });
 

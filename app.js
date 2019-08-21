@@ -6,6 +6,7 @@ let express         = require("express")
 ,   passport        = require('passport')
 ,   LocalStrategy   = require('passport-local')
 ,   mongoose        = require("mongoose")
+,   flash           = require('connect-flash')
 ,   User            = require("./app/models_user");
 
 
@@ -23,15 +24,17 @@ app.use(bodyParser.urlencoded({extended: true}));
 // know the method of the request
 app.use(methodOverride("_method"));
 
-{ // passport configuration
+// Using express-session() must be done before using passport.sesion() below to
+// ensure that login session is restored in the correct order.
+app.use(session({
+    secret: "Once again Rusty wins cutest dog!"
+,   resave: false
+,   saveUninitialized: false
+}));
 
-    // Initializing express-session for express app must be done before passport
-    // initialization below
-    app.use(session({
-        secret: "Once again Rusty wins cutest dog!"
-    ,   resave: false
-    ,   saveUninitialized: false
-    }));
+app.use(flash());
+
+{ // passport configuration
 
     app.use(passport.initialize());
     app.use(passport.session());
@@ -51,6 +54,9 @@ app.use(methodOverride("_method"));
 // supplied in req for us.
 app.use((req, res, next) => {
    res.locals.currentUser = req.user;
+   res.locals.flash_error   = req.flash("error");
+   res.locals.flash_success = req.flash("success");
+
    next();
 });
 

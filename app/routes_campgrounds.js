@@ -30,11 +30,15 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
 
     // Create a new campground and save to DB
     Campground.create(campground, (err, dbCampground) => {
-        if (err) console.log(err);
-        else {
+        if (err) {
+            req.flash("success", "Something went wrong.");
+            console.log(err);
+
+        } else {
+            req.flash("success", "Successfully added campground.");
             console.log( "campground in DB created: " + dbCampground );
-            res.redirect("/campgrounds");   // redirect back to campgrounds page
         }
+        res.redirect("/campgrounds");   // redirect back to campgrounds page
 }); });
 
 

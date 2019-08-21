@@ -24,3 +24,10 @@
 			</div>
 		</div>
 	</nav>
+
+    <% if (flash_error && flash_error.length > 0) { %>
+        <%= flash_error %>
+    <% } %>
+    <% if (flash_success && flash_success.length > 0) { %>
+        <%= flash_success %>
+    <% } %>
