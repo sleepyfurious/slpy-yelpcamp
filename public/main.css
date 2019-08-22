@@ -68,8 +68,8 @@ body {
 
 /* Workaround nav-bar collapse */
 /* ref: https://stackoverflow.com/questions/23535289/bootstrap-3-disable-navbar-collapse/23536146#23536146 */
-.navbar-header { float: left; }
-.navbar-right  { float: right; }
+.navbar-header, .navbar-nav { float: left; }
+.navbar-nav.navbar-right    { float: right; }
 ul.nav > li    { float: left; }
 ul.nav         { margin: 0 -15px 0 0; }
 ul.nav a       { padding: 15px;  }
