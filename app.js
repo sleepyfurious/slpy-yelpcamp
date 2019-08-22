@@ -17,8 +17,9 @@ const PORT          = process.env.PORT;
 
 // ===
 let app = express();
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + "/public"));
 
 // It is important that this module is used before any module that needs to
 // know the method of the request

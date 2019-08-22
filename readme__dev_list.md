@@ -161,7 +161,7 @@ Each Campground has:
 * reminder: Bootstrap has alert component with different colors built in!
 
 ## Landing Page
-- [ ] see tutorial here: https://github.com/nax3t/background-slider. follow it!
+- [x] see tutorial here: https://github.com/nax3t/background-slider. follow it!
  * modernizr.js is to make old browser likes internet explorer <= 8.0 behave with css more like modern browser.
  * separate landing.css that is used just for this page
  * css property "animation" is going to allow us to actually fade images in and out. infinite value is to loop infinitly.
