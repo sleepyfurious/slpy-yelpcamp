@@ -1,10 +1,13 @@
 # Slpy's YelpCamp
-YelpCamp is a Node.js web application from The Web Developer Bootcamp[¹](#credits). A plain and simple social network website for my learning and demonstration. This project, Slpy's YelpCamp, is my version of YelpCamp. I started versioning it at revision 2 of YelpCamp (YelpCamp_v2). I'll code to achieve almost the same result as the final version in the course, v11, but with possibilities of some minor adjustments to my preference and some additional features. The goal is to learn full-stack web development try some relevant coding skills. See pending development note here: [readme__dev_list.md](readme__dev_list.md).
+YelpCamp is a Node.js web application from _The Web Developer Bootcamp_[¹](#credits). A plain and simple social network website for my learning and demonstration. This project, Slpy's YelpCamp, is my version of YelpCamp. I started versioning it at revision 2 of YelpCamp (YelpCamp_v2). I'll code to achieve almost the same result as the final version in the course, v11, but with possibilities of some minor adjustments to my preference as I code along. The goal is to learn full-stack web development try some relevant coding skills. See pending development note here: [readme__dev_list.md](readme__dev_list.md).
 
-Slpy's YelpCamp has deviated from YelpCamp_v11 with the following additions:
+Slpy's YelpCamp has deviated from the original YelpCamp with the following additions:
 * The use of some modern JavaScript element that pops out as I study _The JavaScript language_ book[²](#credits) along coding this app; there will be elements like template literals, arrow functions, Object.assign, async/await, etc...
 * The new and edit forms are DRY up in single EJS template instead of two separated one for both campgrounds and comments.
 * A convenient UI for a user registered with name "admin" to seed database. The seeding also reset users to contain only "admin".
+
+For reference, the original YelpCamp from _The Web Developer Bootcamp_ can be found here: https://github.com/nax3t/webdevbootcamp/tree/master/YelpCamp.
+
 
 ## Launching app for local development
 The code use environment variables to supply site-specific configuration. Currently, supplying the following environment variable is required:
