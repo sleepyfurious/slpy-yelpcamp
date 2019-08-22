@@ -1,0 +1,26 @@
+body {
+    font-family: Lato;
+}
+
+.btn.btn-default{
+    color       : white;
+    background  : #449d44;
+    text-shadow : 0 -1px 0 rgba(0,0,0,.2);
+}
+
+.btn.btn-default:active{
+    color       : white;
+    background  : #419641;;
+    text-shadow : 0 -1px 0 rgba(0,0,0,.2);
+}
+
+#card-container {
+    display     : flex;
+    flex-wrap   : wrap;
+}
+
+#card-container .thumbnail img {
+    height      : 250px;
+    width       : 100%;
+    object-fit  : cover;
+}
