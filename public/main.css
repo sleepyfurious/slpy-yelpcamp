@@ -21,13 +21,24 @@ body {
     flex-wrap   : wrap;
 }
 
+/* Maintain img ratio with padding-bottom trick.
+ * https://stackoverflow.com/questions/39377731/img-height-equals-to-its-width-inside-a-div#39377896 */
+#card-container .thumbnail-ratio-fix {
+    position       : relative;
+    padding-bottom : 100%;
+    overflow       : hidden;
+}
+
 #card-container .thumbnail img {
-    height      : 250px;
+    position    : absolute;
+    top         : 0;
+    left        : 0;
+    height      : 100%;
     width       : 100%;
     object-fit  : cover;
 }
 
-/* workaround nav-bar collapse */
+/* Workaround nav-bar collapse */
 /* ref: https://stackoverflow.com/questions/23535289/bootstrap-3-disable-navbar-collapse/23536146#23536146 */
 .navbar-header { float: left; }
 .navbar-right  { float: right; }
