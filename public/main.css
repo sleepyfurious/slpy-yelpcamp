@@ -1,5 +1,7 @@
 body {
     font-family: Lato;
+
+    padding-top: 70px;
 }
 
 .btn.btn-default{
@@ -24,3 +26,11 @@ body {
     width       : 100%;
     object-fit  : cover;
 }
+
+/* workaround nav-bar collapse */
+/* ref: https://stackoverflow.com/questions/23535289/bootstrap-3-disable-navbar-collapse/23536146#23536146 */
+.navbar-header { float: left; }
+.navbar-right  { float: right; }
+ul.nav > li    { float: left; }
+ul.nav         { margin: 0 -15px 0 0; }
+ul.nav a       { padding: 15px;  }
