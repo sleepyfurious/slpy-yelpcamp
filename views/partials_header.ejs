@@ -35,10 +35,22 @@
 		</div>
 	</nav>
 
-    <!-- Undefined is not truthy, empty array is truthy. -->
-    <% if (flash_error && flash_error.length > 0) { %>
-        <%= flash_error %>
-    <% } %>
-    <% if (flash_success && flash_success.length > 0) { %>
-        <%= flash_success %>
-    <% } %>
+    <div class="container">
+
+        <!-- Undefined is not truthy, empty array is truthy. -->
+        <% if (flash_error && flash_error.length > 0) { %>
+            <div class="alert alert-danger" role="alert"><ul>
+                <% flash_error.forEach((item) => { %>
+                    <li><%= item %></li>
+                <% }); %>
+            </ul></div>
+        <% } %>
+
+        <% if (flash_success && flash_success.length > 0) { %>
+            <div class="alert alert-success" role="alert"><ul>
+                <% flash_success.forEach((item) => { %>
+                    <li><%= item %></li>
+                <% }); %>
+            </ul></div>
+        <% } %>
+    </div>

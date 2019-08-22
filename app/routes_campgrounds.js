@@ -54,8 +54,6 @@ router.get("/:id", (req, res) => {
             return res.redirect("back");
         }
 
-        console.log(foundCampground);
-
         // render show template with that campground
         res.render("campgrounds_show", {campground:foundCampground});
 }); });
