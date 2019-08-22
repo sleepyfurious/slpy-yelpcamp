@@ -73,7 +73,8 @@ router.get( "/:comment_id/edit"
 
             if (err) res.redirect("back");
             else     res.render("comments_form", {  campground: {
-                                                        _id: req.params.id,
+                                                        _id : req.params.id
+                                                    ,   name: foundCampground.name
                                                     }     
                                                  ,  comment: foundComment
                                                  ,  isNewOrNotEdit: false

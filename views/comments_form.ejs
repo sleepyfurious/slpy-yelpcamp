@@ -2,7 +2,7 @@
 
 <h1>
     <%= isNewOrNotEdit? "Add New Comment to": "Edit Comment of" %>
-    <%= " " + campground.name %>
+    <%= ` "${campground.name}"` %>
 </h1>
 
 <% if (isNewOrNotEdit) { %>
