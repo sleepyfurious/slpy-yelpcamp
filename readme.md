@@ -21,7 +21,7 @@ export DATABASEURL="mongodb://localhost/yelp_camp"
 node app.js
 ```
 
-This creates a quick and dirty Bash script that launches it all (both mongod and our node app) easily:
+This snippet creates a quick and dirty Bash script that launches it all (both mongod and our node app) easily. Run it in terminal at project's root directory:
 ```bash
 echo "\
 \
