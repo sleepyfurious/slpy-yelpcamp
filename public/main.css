@@ -4,22 +4,6 @@ body {
     padding-top: 70px;
 }
 
-.btn.branding{
-    color       : white;
-    background  : #449d44;
-    text-shadow : 0 -1px 0 rgba(0,0,0,.2);
-}
-
-.btn.branding:active{
-    color       : white;
-    background  : #419641;
-    text-shadow : 0 -1px 0 rgba(0,0,0,.2);
-}
-
-.btn.branding:hover{
-    background  : #218838;;
-}
-
 .mini-form-panel {
     width: 384px;
 
