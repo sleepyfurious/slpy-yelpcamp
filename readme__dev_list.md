@@ -65,10 +65,7 @@ Each Campground has:
 
 ## Style Show Page
 - [ ] Add sidebar to show page
-- [ ] Display comments nicely
-
-* reminder: use .caption of bootstrap instead of Colt's .caption-full.
-* reminder: test that everything to this point works in my own cloud, review Ian notes and go fix it accordingly.
+- [x] Display comments nicely
 
 # YelpCamp V6
 
@@ -145,8 +142,6 @@ Each Campground has:
 - [x] Add Destroy route
 - [x] Add Delete button
 
-* reminder: Colt actually uses this id twice, change #delete-form  to .delete-form
-
 ## Authorization Part 2: Comments
 - [x] User can only edit his/her comments
 - [x] User can only delete his/her comments
@@ -168,7 +163,7 @@ Each Campground has:
 
 ## The rest
 - [ ] Dynamic Price Feature
-- [ ] Bootstraping the remaining and some CSS work.
+- [x] Bootstraping the remaining and some CSS work.
 
 ## Aftermath
 * I might later add features like google map and fuzzy search: https://www.udemy.com/the-web-developer-bootcamp/learn/lecture/6754188#content
