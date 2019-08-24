@@ -12,8 +12,31 @@ body {
 
 .btn.branding:active{
     color       : white;
-    background  : #419641;;
+    background  : #419641;
     text-shadow : 0 -1px 0 rgba(0,0,0,.2);
+}
+
+.btn.branding:hover{
+    background  : #218838;;
+}
+
+.mini-form-panel {
+    width: 384px;
+
+}
+
+.form-panel {
+    float: none;
+}
+
+.mini-form-panel, .form-panel {
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.mini-form-panel h1, .form-panel h1 {
+    margin: 0;
+    text-align: center;
 }
 
 #card-container {

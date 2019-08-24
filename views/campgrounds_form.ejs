@@ -1,39 +1,56 @@
 <% include partials_header %>
 
-<div class="container">
-    <div class="row">
+<div class="container-fluid">
+<div class="col-xs-12 col-sm-10 col-md-8 form-panel">
+<div class="panel panel-default">
+    <div class="panel-heading">
         <h1>
             <%= isNewOrNotEdit? "Create a New Campground"
                               : `Edit "${campground.name}"`; %>
         </h1>
+    </div>
         
+    <div class="panel-body">
         <% if (isNewOrNotEdit) { %>
         <form action="/campgrounds" method="POST">
         <% } else { %>
         <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
         <% } %>
             
-            <input type="text" 
-                   name="campground[name]"  placeholder="name"
-                   value="<%= isNewOrNotEdit? '': campground.name; %>"
-                   >
+            <div class="form-group">
+                <label for="name">Campground's name</label>
+                <input type="text" id="name" class="form-control"
+                       name="campground[name]"  placeholder="name"
+                       value="<%= isNewOrNotEdit? '': campground.name; %>"
+                       >
+            </div>
             
-            <input type="text"
-                   name="campground[image]" placeholder="image url"
-                   value="<%= isNewOrNotEdit? '': campground.image; %>"
-                   >
+            <div class="form-group">
+                <label for="image_url">Image URL</label>
+                <input type="text" id="image_url" class="form-control"
+                       name="campground[image]" placeholder="image url"
+                       value="<%= isNewOrNotEdit? '': campground.image; %>"
+                       >
+            </div>
 
-            <input type="text"
-                   name="campground[description]" placeholder="description"
-                   value="<%= isNewOrNotEdit? '': campground.description; %>"
-                   >
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" class="form-control"
+                       name="campground[description]" placeholder="description"
+                       value="<%= isNewOrNotEdit? '': campground.description; %>"
+                       >
+            </div>
 
-            <button class="bgn btn-lg btn-primary btn-block">submit</button>
+            <button class="btn btn-default btn-block branding">Submit</button>
             
         </form>
-        
-        <a href="javascript:history.back()">Go Back</a>
-    </div>  
+        <hr>
+        <a href="javascript:history.back()" 
+           class="btn btn-default btn-block"
+           >Go Back</a>
+    </div>
+</div>
+</div>
 </div>
 
 <% include partials_footer %>

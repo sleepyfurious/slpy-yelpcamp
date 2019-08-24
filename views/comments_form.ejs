@@ -1,25 +1,44 @@
 <% include partials_header %>
 
-<h1>
-    <%= isNewOrNotEdit? "Add New Comment to": "Edit Comment of" %>
-    <%= ` "${campground.name}"` %>
-</h1>
+<div class="container-fluid">
+<div class="col-xs-12 col-sm-10 col-md-8 form-panel">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1>
+            Add New Comment
+        </h1>
+    </div>
 
-<% if (isNewOrNotEdit) { %>
-<form action="/campgrounds/<%= campground._id %>/comments" method="POST">
-<% } else { %>
-<form action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
-<% } %>
+    <div class="panel-body">
+        <p class="text-center">
+            <%= isNewOrNotEdit? "Add New Comment to": "Edit Comment of" %>
+            <%= ` "${campground.name}"` %>
+        </p>
 
-    <input type="text" name="comment[text]"
-           placeholder="comment text"
-           value="<%= isNewOrNotEdit? '': comment.text %>"
-           >
+        <% if (isNewOrNotEdit) { %>
+        <form action="/campgrounds/<%= campground._id %>/comments" method="POST">
+        <% } else { %>
+        <form action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+        <% } %>
 
-    <button>Submit!</button> 
+            <div class="form-group">
+                <label for="comment_text">Comment text</label>
+                <input type="text" name="comment[text]" class="form-control"
+                       id="comment_text" placeholder="comment text"
+                       value="<%= isNewOrNotEdit? '': comment.text %>"
+                       >
+            </div>
 
-</form>
+            <button class="btn btn-default btn-block branding">Submit</button>
 
-<a href="javascript:history.back()">Go Back</a>
+        </form>
+        <hr>
+        <a href="javascript:history.back()" 
+           class="btn btn-default btn-block"
+           >Go Back</a>
+    </div>
+</div>
+</div>
+</div>
 
 <% include partials_footer %>
