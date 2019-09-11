@@ -28,7 +28,6 @@ body {
 .form-panel, .mini-form-panel {
     margin-left     : auto;
     margin-right    : auto;
-    margin-bottom   : 2rem;
 }
 
 .form-panel h1, .mini-form-panel h1 {
@@ -40,16 +39,13 @@ body {
     border-color: rgb(206, 212, 218);
 }
 
-#campground-cards-container .card {
-    margin-bottom: 2rem;
-}
-
 /* Maintain img ratio with padding-bottom trick.
  * https://stackoverflow.com/questions/39377731/img-height-equals-to-its-width-inside-a-div#39377896 */
-#campground-cards-container .card-img-aspectratio-fix {
+#campground-cards-container .card-img-fixerframe {
     position       : relative;
     padding-bottom : 100%;
         /* ^ relative to the width of the containing block */
+    margin         : 4px 4px 0;
     overflow       : hidden;
 }
 
@@ -59,11 +55,36 @@ body {
     left            : 0;
     height          : 100%;
     width           : 100%;
-    padding         : 4px;
     object-fit      : cover;
     border-radius   : 0px;
 }
 
 #campground-cards-container .card-link {
     color       : inherit;
+}
+
+#campground-cards-container h5 {
+    margin: 0px;
+}
+
+#show-card .card-img-fixerframe {
+    margin  : 4px 4px 0;
+}
+
+#show-card .card-footer {
+    padding         : 4px;
+    padding-left    : 0px;
+}
+
+#show-card .card-footer p {
+    padding-left: 1.25rem;
+}
+
+#comment-well .card-header {
+    padding: 4px;
+}
+
+.form-panel, .mini-form-panel, 
+.card {
+    margin-bottom: 2rem;
 }
