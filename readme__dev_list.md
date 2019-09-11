@@ -167,3 +167,11 @@ Each Campground has:
 
 ## Aftermath
 * I might later add features like google map and fuzzy search: https://www.udemy.com/the-web-developer-bootcamp/learn/lecture/6754188#content
+
+### Make it use Bootstrap 4
+
+- [x] Navbar
+- [ ] Flashes
+- [ ] Jumbotron
+- [ ] Cards
+- [ ] Dialogs

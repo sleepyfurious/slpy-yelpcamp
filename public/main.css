@@ -1,82 +1,10 @@
 body {
     font-family: Lato;
 
-    padding-top: 70px;
+    padding-top: 85px;
 }
 
-.mini-form-panel {
-    width: 384px;
-
+.navbar {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e7e7e7; 
 }
-
-.form-panel {
-    float: none;
-}
-
-.mini-form-panel, .form-panel {
-    margin-left: auto;
-    margin-right:auto;
-}
-
-.mini-form-panel h1, .form-panel h1 {
-    margin: 0;
-    text-align: center;
-}
-
-#card-container {
-    display     : flex;
-    flex-wrap   : wrap;
-}
-
-/* Maintain img ratio with padding-bottom trick.
- * https://stackoverflow.com/questions/39377731/img-height-equals-to-its-width-inside-a-div#39377896 */
-#card-container .thumbnail-ratio-fix {
-    position       : relative;
-    padding-bottom : 100%;
-    overflow       : hidden;
-}
-
-#card-container .thumbnail img {
-    position    : absolute;
-    top         : 0;
-    left        : 0;
-    height      : 100%;
-    width       : 100%;
-    object-fit  : cover;
-}
-
-#show-card .card-ctrl {
-    padding-top : 4px;
-    border-top  : 1px solid #DDD;
-}
-
-#show-card .card-ctrl * {
-    display : inline-block;
-}
-
-.inline-ctrl {
-    display: inline;
-    margin-left: 5px;
-}
-
-.inline-ctrl * {
-    display: inline-block;
-    margin:0;
-    padding:0;
-}
-
-#comment-well > .comment-msg {
-    margin-bottom: 0.5em;
-}
-
-#comment-well > .comment-msg:last-of-type {
-    margin-bottom: 0;
-}
-
-/* Workaround nav-bar collapse */
-/* ref: https://stackoverflow.com/questions/23535289/bootstrap-3-disable-navbar-collapse/23536146#23536146 */
-.navbar-header, .navbar-nav { float: left; }
-.navbar-nav.navbar-right    { float: right; }
-ul.nav > li    { float: left; }
-ul.nav         { margin: 0 -15px 0 0; }
-ul.nav a       { padding: 15px;  }
