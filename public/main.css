@@ -9,6 +9,12 @@ body {
     border-bottom: 1px solid #e7e7e7; 
 }
 
+@media (min-width: 576px) {
+    .navbar > .container {
+        padding: 0 15px;
+    }
+}
+
 #flashes > div:last-child {
     margin-bottom: 2rem;
 }

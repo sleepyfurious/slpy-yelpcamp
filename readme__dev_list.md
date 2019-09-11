@@ -177,3 +177,4 @@ Each Campground has:
 - [x] Dialogs
 - [x] Showpage
 - [ ] Landing Button's Inner  Shadow.
+- [ ] Responsive Jumbotron content.
