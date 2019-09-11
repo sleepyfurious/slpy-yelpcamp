@@ -3,6 +3,7 @@ YelpCamp is a Node.js web application from _The Web Developer Bootcamp_[¹](#cre
 
 Slpy's YelpCamp has deviated from the original YelpCamp with the following additions:
 * The use of some modern JavaScript element that pops out as I study _The JavaScript language_ book[²](#credits) along coding this app; there are elements like template literals, arrow functions, Object.assign, async/await, etc...
+* Use Bootstrap 4 instead of Bootstrap 3.
 * The new and edit forms are DRY up in single EJS template instead of two separated one for both campgrounds and comments.
 * A convenient UI for a user registered with name "admin" to seed database. The seeding also reset users to contain only "admin".
 
