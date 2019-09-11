@@ -176,4 +176,4 @@ Each Campground has:
 - [x] Cards
 - [x] Dialogs
 - [x] Showpage
-- [ ] Landing Button's Inner  Shadow.
+- [x] Landing Page
