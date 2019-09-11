@@ -1,12 +1,10 @@
 <% include partials_header %> 
 
 <div class="container">
-<div class="panel panel-default mini-form-panel">
-    <div class="panel-heading">
-        <h1>Sign Up!</h1>
-    </div>
+<div class="card mini-form-panel">
+    <h1 class="card-header">Sign Up!</h1>
 
-    <div class="panel-body">
+    <div class="card-body">
         <p class="text-center">Fill them in. It's quick and easy.</p>
         <form action="/register" method="POST">
             <div class="form-group">
@@ -19,11 +17,11 @@
                 <input type="password" name="password" id="password"
                        placeholder="password" class="form-control">
             </div>
-            <button class="btn btn-default btn-block branding">Sign Up</button>
+            <button class="btn btn-block branding">Sign Up</button>
         </form>
         <hr>
         <a href="javascript:history.back()" 
-           class="btn btn-default btn-block"
+           class="btn btn-outline-secondary btn-block"
            >Go Back</a>
     </div>
 </div>

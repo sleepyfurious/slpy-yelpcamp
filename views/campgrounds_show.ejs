@@ -15,7 +15,7 @@
             <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
                 <div class="pull-right">
                     <a href="/campgrounds/<%= campground._id %>/edit"
-                       class="btn btn-default" role="button"
+                       class="btn" role="button"
                        >Edit</a>
                     <form action="/campgrounds/<%= campground._id %>?_method=DELETE" 
                           method="POST"
@@ -32,7 +32,7 @@
     <div class="well" id="comment-well">
         <div class="text-right">
             <a href="/campgrounds/<%= campground._id %>/comments/new"
-               class="btn btn-default branding"
+               class="btn branding"
                > Add New Comment </a>
         </div>
 

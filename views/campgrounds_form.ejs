@@ -1,16 +1,15 @@
 <% include partials_header %>
 
-<div class="container-fluid">
-<div class="col-xs-12 col-sm-10 col-md-8 form-panel">
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h1>
-            <%= isNewOrNotEdit? "Create a New Campground"
-                              : `Edit "${campground.name}"`; %>
-        </h1>
-    </div>
+<div class="container">
+<div class="row justify-content-around">
+<div class="col-sm-12 col-md-10 col-lg-8">
+<div class="card form-panel">
+    <h1 class="card-header">
+        <%= isNewOrNotEdit? "Create a New Campground"
+                            : `Edit "${campground.name}"`; %>
+    </h1>
         
-    <div class="panel-body">
+    <div class="card-body">
         <% if (isNewOrNotEdit) { %>
         <form action="/campgrounds" method="POST">
         <% } else { %>
@@ -41,14 +40,15 @@
                        >
             </div>
 
-            <button class="btn btn-default btn-block branding">Submit</button>
+            <button class="btn btn-block branding">Submit</button>
             
         </form>
         <hr>
         <a href="javascript:history.back()" 
-           class="btn btn-default btn-block"
+           class="btn btn-outline-secondary btn-block"
            >Go Back</a>
     </div>
+</div>
 </div>
 </div>
 </div>

@@ -174,5 +174,5 @@ Each Campground has:
 - [x] Flashes
 - [x] Jumbotron
 - [x] Cards
-- [ ] Dialogs
+- [x] Dialogs
 - [ ] Showpage
