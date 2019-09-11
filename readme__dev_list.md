@@ -171,7 +171,8 @@ Each Campground has:
 ### Make it use Bootstrap 4
 
 - [x] Navbar
-- [ ] Flashes
-- [ ] Jumbotron
-- [ ] Cards
+- [x] Flashes
+- [x] Jumbotron
+- [x] Cards
 - [ ] Dialogs
+- [ ] Showpage

@@ -4,24 +4,26 @@
 	<!-- header tag work as same as a div tag. They are just containers, but this has specific semantic meaning. -->
 	<header class="jumbotron">
 		<div class="container">
-			<h1>Welcome To <span id="logo"><span>Slpy's</span> YelpCamp!</span></h1>
-			<p>See campgrounds from all over the world...</p>
-			<p>
-				<a class="btn btn-default btn-lg branding" href="/campgrounds/new">Add New Campground</a>
-			</p>
+			<h1 class="display-3">Welcome To <span id="logo"><span>Slpy's</span> YelpCamp!</span></h1>
+			<p class="lead">See campgrounds from all over the world...</p>
+			<a class="btn btn-default btn-lg branding" href="/campgrounds/new">Add New Campground</a>
 		</div>	
 	</header>
 
-	<div class="row text-center" id="card-container">
+	<div class="card-columns">
+		
+	</div>
+
+	<div class="row text-center" id="campground-cards-container">
 		<% campgrounds.forEach(function(campground){ %>
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<a href="/campgrounds/<%= campground._id %>">
-				<div class="thumbnail">
-					<div class="thumbnail-ratio-fix">
-						<img src="<%=campground.image %>">
+			<div class="col-lg-3 col-md-6">
+				<a href="/campgrounds/<%= campground._id %>" class="card-link">
+				<div class="card">
+					<div class="card-img-aspectratio-fix">
+						<img class="card-img-top" src="<%=campground.image %>">
 					</div>
-					<div class="caption">
-						<h4><%=campground.name %></h4>
+					<div class="card-body">
+						<h5><%=campground.name %></h4>
 					</div>
 				</div>
 				</a>

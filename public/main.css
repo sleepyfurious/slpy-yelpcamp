@@ -8,3 +8,39 @@ body {
     background-color: #f8f8f8;
     border-bottom: 1px solid #e7e7e7; 
 }
+
+#flashes ul {
+    margin: 0;
+}
+
+.jumbotron {
+    padding: 4rem;
+}
+
+#campground-cards-container .card {
+    margin-bottom: 30px;
+}
+
+/* Maintain img ratio with padding-bottom trick.
+ * https://stackoverflow.com/questions/39377731/img-height-equals-to-its-width-inside-a-div#39377896 */
+#campground-cards-container .card-img-aspectratio-fix {
+    position       : relative;
+    padding-bottom : 100%;
+        /* ^ relative to the width of the containing block */
+    overflow       : hidden;
+}
+
+#campground-cards-container .card-img-top {
+    position        : absolute;
+    top             : 0;
+    left            : 0;
+    height          : 100%;
+    width           : 100%;
+    padding         : 4px;
+    object-fit      : cover;
+    border-radius   : 0px;
+}
+
+#campground-cards-container .card-link {
+    color       : inherit;
+}
